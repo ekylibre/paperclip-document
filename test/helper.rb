@@ -19,10 +19,12 @@ Paperclip::Railtie.insert
 class Document < ActiveRecord::Base
   has_attached_file(:original,
                     :storage => :filesystem,
-                    :path => "./tmp/:id/:style.:extension",
+                    :path => "./tmp/documents/:id/:style.:extension",
                     :url => "/tmp/:id.:extension",
-                    :styles => {:frozen => {}},
-                    :processors => [:textize, :pages_count, :thumbnailize, :pdfize])
+                    :styles => {
+                      :archive => {:clean => true, :format =>:pdf, :processors => [:reader, :counter, :freezer]},
+                      :thumbnail => {:processors => [:sketcher], :format => :jpg}
+                    })
 end
 
 

@@ -1,38 +1,30 @@
 module Paperclip
 
   # This processor extract the OCR text of the file
-  class PagesCount < DocumentProcessor
+  class Counter < DocumentProcessor
 
     attr_accessor :pages_count_column
 
     def initialize(file, options = {}, attachment = nil)
-      super
+      super(file, options, attachment)
       if @options[:pages_count_column].nil? and pages_count_column?
         @options[:pages_count_column] = default_pages_count_column
       end
       @pages_count_column = @options[:pages_count_column]
 
       unless @pages_count_column
-        raise Paperclip::Error, "No pages_count column given"
+        raise Paperclip::Error, "No pages count column given"
       end
     end
 
     # Extract the pages count of all the document
     def make
-      dst = @file
-      count = nil
-      begin
-        count = Docsplit.extract_length(file_path.to_s)
-      rescue
-        raise Paperclip::Error, "There was an error during pages count extraction"
-      end
-      
-      puts "Count: #{count}"
+      count = Docsplit.extract_length(file_path.to_s)
 
-      instance = @attachment.instance
-      instance.class.update_all({pages_count_column => count}, {:id => instance.id})
+      instance[pages_count_column] = count
+      instance.run_callbacks(:save) { false }
 
-      return dst
+      return file
     end
     
     # Check if a pages count column is present

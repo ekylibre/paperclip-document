@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define :version => 1 do
+ActiveRecord::Schema.define :version => "001" do
   create_table "documents", :force => true do |t|
     t.string  :name
     t.string  :original_file_name
@@ -6,6 +6,6 @@ ActiveRecord::Schema.define :version => 1 do
     t.integer :original_updated_at
     t.integer :original_file_size
     t.text    :original_content_text
-    t.text    :original_pages_count
+    t.integer :original_pages_count
   end
 end
