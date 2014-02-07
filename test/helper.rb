@@ -1,3 +1,5 @@
+require 'coveralls'
+Coveralls.wear!
 require 'paperclip'
 require 'paperclip/railtie'
 require 'active_record'
