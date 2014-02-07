@@ -5,5 +5,5 @@ rvm:
   - 2.0.0
   - 2.1.0
 before_install:
-  - sudo apt-get install -qq libmagic-dev imagemagick tesseract-ocr tesseract-ocr-fra tesseract-ocr-eng tesseract-ocr-spa pdftk libreoffice poppler-utils poppler-data ghostscript
+  - sudo apt-get install -qq libmagic-dev graphicsmagick tesseract-ocr tesseract-ocr-fra tesseract-ocr-eng tesseract-ocr-spa pdftk libreoffice poppler-utils poppler-data ghostscript
 script: bundle exec rake test
