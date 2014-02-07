@@ -1,6 +1,12 @@
 # Paperclip::Document
 
-TODO: Write a gem description
+[![Gem Version](https://badge.fury.io/rb/paperclip-document.png)](http://badge.fury.io/rb/paperclip-document) 
+[![Dependency Status](https://gemnasium.com/burisu/paperclip-document.png)](https://gemnasium.com/burisu/paperclip-document)
+[![Quality metrics](https://codeclimate.com/github/burisu/paperclip-document.png)](https://codeclimate.com/github/burisu/paperclip-document)
+[![Continuous Integration](https://api.travis-ci.org/burisu/paperclip-document.png?branch=master)](https://travis-ci.org/burisu/paperclip-document)
+[![Code coverage](https://coveralls.io/repos/burisu/paperclip-document/badge.png?branch=master)](https://coveralls.io/r/burisu/paperclip-document)
+
+Document processors for paperclip.
 
 ## Installation
 
@@ -18,7 +24,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use processors like the example:
+
+    has_attached_file :file, {
+      styles: {
+        default:   {format: :pdf, processors: [:reader, :counter, :freezer], clean: true},
+        thumbnail: {format: :jpg, processors: [:sketcher]}
+      }
+    }
+
+Due to docsplit dependency (0.7.2), text cleaning is only effective on Ruby < 1.9 for now.
 
 ## Contributing
 
