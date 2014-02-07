@@ -33,7 +33,7 @@ Use processors like the example:
       }
     }
 
-Due to docsplit dependency (0.7.2), text cleaning is only effective on Ruby < 1.9 for now.
+Due to docsplit dependency (0.7.2), text cleaning is only effective on Ruby < 2.0 for now.
 
 ## Contributing
 
