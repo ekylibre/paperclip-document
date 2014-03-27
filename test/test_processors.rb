@@ -24,7 +24,7 @@ class TestProcessors < Paperclip::Document::TestCase
     assert_equal 1, document.original.pages_count
 
     assert !document.original.content_text.nil?
-    assert document.original.content_text.match("This is an example.")
+    assert document.original.content_text =~ /This is an example./
   end
 
   def test_docx

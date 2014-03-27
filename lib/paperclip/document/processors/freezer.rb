@@ -2,7 +2,7 @@ require 'filemagic'
 
 module Paperclip
 
-  # This processor extract first page as thumbnail
+  # This processor converts document to PDF
   class Freezer < DocumentProcessor
     def initialize(file, options = {}, attachment = nil)
       super
@@ -26,10 +26,7 @@ module Paperclip
 
 
     def pdf_format?
-      file_magic = FileMagic.new
-      type = file_magic.file(file_path.to_s)
-      file_magic.close
-      type =~ /pdf/i
+      File.open(file_path, "rb", &:readline) =~ /\A\%PDF-\d+(\.\d+)?$/
     end
 
   end

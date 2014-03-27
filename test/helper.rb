@@ -22,9 +22,10 @@ class Document < ActiveRecord::Base
                     :path => "./tmp/documents/:id/:style.:extension",
                     :url => "/tmp/:id.:extension",
                     :styles => {
-                      :archive => {:clean => true, :format =>:pdf, :processors => [:reader, :counter, :freezer]},
+                      :archive => {:clean => true, :format => :pdf, :processors => [:reader, :counter, :freezer]},
                       :thumbnail => {:processors => [:sketcher], :format => :jpg}
                     })
+  validates_attachment_content_type :original, :content_type => /application/
 end
 
 
