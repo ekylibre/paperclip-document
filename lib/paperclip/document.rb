@@ -11,9 +11,7 @@ module Paperclip
     def initialize(file, options = {}, attachment = nil)
       super(file, options, attachment)
       @instance = @attachment.instance
-      # @tmp_dir = Pathname.new(Dir.tmpdir).join("paperclip-document", instance.class.name, attachment.name.to_s, basename, Time.now.to_i.to_s(36) + "-" + rand(1_000_000).to_s(36))
-      # @tmp_dir = Rails.root.join("paperclip-document", instance.class.name, attachment.name.to_s, basename, Time.now.to_i.to_s(36) + "-" + rand(1_000_000).to_s(36))
-      @tmp_dir = Pathname.new(Dir.tmpdir).join("paperclip-document-" + rand(1_000_000_000).to_s(36) + "-" + rand(1_000_000).to_s(36) + "-" + Time.now.to_i.to_s(36) + "-" + rand(1_000_000).to_s(36))
+      @tmp_dir = Pathname.new(Dir.tmpdir).join("paperclip-document-" + Time.now.to_i.to_s(36) + rand(1_000_000_000).to_s(36))
     end
     
     def file_path
