@@ -15,13 +15,13 @@ module Paperclip
       unless @text_column
         raise Paperclip::Error, "No content text column given"
       end
-      @clean = !!(options.has_key?(:clean) ? options[:clean] : true)
+      @clean = (RUBY_VERSION >= "2.0" ? false : options.has_key?(:clean) ? !!options[:clean] : true)
     end
 
     # Extract the text of all the document
     def make
       destination_path = tmp_dir.to_s
-      options = {:output => destination_path, :clean => @clean}
+      options = {output: destination_path, clean: @clean}
       options[:language] = (language.is_a?(Proc) ? language.call(attachment.instance) : language)
       Docsplit.extract_text(file_path.to_s, options)
       

@@ -1,0 +1,9 @@
+language: ruby
+bundler_args: --without doc
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+before_install:
+  - sudo apt-get install -qq libmagic-dev graphicsmagick tesseract-ocr tesseract-ocr-fra tesseract-ocr-eng tesseract-ocr-spa pdftk libreoffice poppler-utils poppler-data ghostscript
+script: bundle exec rake test
