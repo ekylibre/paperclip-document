@@ -1,44 +1,20 @@
 require "paperclip/document/version"
+require "paperclip/document/attachment_extension"
 require "docsplit"
 require "pathname"
 
 module Paperclip
-  # Main processor
-  class DocumentProcessor < Processor
-    
-    attr_reader :instance, :tmp_dir
-
-    def initialize(file, options = {}, attachment = nil)
-      super(file, options, attachment)
-      @instance = @attachment.instance
-      @tmp_dir = Pathname.new(Dir.tmpdir).join("paperclip-document-" + Time.now.to_i.to_s(36) + rand(1_000_000_000).to_s(36))
-    end
-    
-    def file_path
-      Pathname.new(@file.path)
-    end
-
-    def basename
-      file_path.basename.to_s.gsub(/\.[^\.]+/, '')
-    end
-    
+  module Document
+    autoload :Processor,  'paperclip/document/processor'
+    autoload :Processors, 'paperclip/document/processors'
   end
 
-  class Attachment
-
-    # Returns the content_text of the file as originally extracted, and lives in the <attachment>_content_text attribute of the model.
-    def content_text
-      instance_read(:content_text)
-    end
-
-    # Returns the pages_count of the file as originally computed, and lives in the <attachment>_pages_count attribute of the model.
-    def pages_count
-      instance_read(:pages_count)
-    end
-
+  configure do |c|
+    c.register_processor :sketcher, Document::Processors::Sketcher
+    c.register_processor :reader,   Document::Processors::Reader
+    c.register_processor :freezer,  Document::Processors::Freezer
+    c.register_processor :counter,  Document::Processors::Counter
   end
-  
 
 end
 
-require "paperclip/document/processors"
