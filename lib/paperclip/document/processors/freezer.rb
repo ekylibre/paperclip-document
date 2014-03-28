@@ -26,7 +26,7 @@ module Paperclip
 
 
         def pdf_format?
-          File.open(file_path, "rb", &:readline) =~ /\A\%PDF-\d+(\.\d+)?$/
+          File.open(file_path, "rb", &:readline).to_s =~ /\A\%PDF-\d+(\.\d+)?$/
         end
 
       end
