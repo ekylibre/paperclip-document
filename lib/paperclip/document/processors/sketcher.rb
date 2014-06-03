@@ -27,8 +27,8 @@ module Paperclip
           elsif @density
             options[:density] = @density
           end
-          Docsplit.extract_images(file_path.to_s, options)
           begin
+            Docsplit.extract_images(file_path.to_s, options)
           rescue
             raise Paperclip::Error, "There was an error extracting the first thumbnail from #{basename}"
           end
