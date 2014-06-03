@@ -7,6 +7,8 @@ require 'pathname'
 require 'paperclip/document'
 require 'minitest/autorun'
 
+I18n.enforce_available_locales = false
+
 # Connect to sqlite
 ActiveRecord::Base.establish_connection(
   "adapter" => "sqlite3",
@@ -28,6 +30,19 @@ class Document < ActiveRecord::Base
                       :thumbnail => {:processors => [:sketcher], :format => :jpg}
                     })
   validates_attachment_content_type :original, :content_type => /application/
+
+  has_attached_file(:freezed, styles: {archive: {format: :jpg, processors: [:freezer]}})
+  validates_attachment_content_type :freezed, content_type: /application/
+
+  has_attached_file(:readed, styles: {archive: {processors: [:reader]}})
+  validates_attachment_content_type :readed, content_type: /application/
+
+  has_attached_file(:counted, styles: {archive: {processors: [:counter]}})
+  validates_attachment_content_type :counted, content_type: /application/
+
+  has_attached_file(:sketched, styles: {archive: {format: :pdf, processors: [:sketcher]}})
+  validates_attachment_content_type :sketched, content_type: /application/
+
 end
 
 
