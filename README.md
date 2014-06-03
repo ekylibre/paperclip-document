@@ -1,10 +1,10 @@
 # Paperclip::Document
 
 [![Gem Version](https://badge.fury.io/rb/paperclip-document.png)](http://badge.fury.io/rb/paperclip-document) 
-[![Dependency Status](https://gemnasium.com/burisu/paperclip-document.png)](https://gemnasium.com/burisu/paperclip-document)
-[![Quality metrics](https://codeclimate.com/github/burisu/paperclip-document.png)](https://codeclimate.com/github/burisu/paperclip-document)
-[![Continuous Integration](https://api.travis-ci.org/burisu/paperclip-document.png?branch=master)](https://travis-ci.org/burisu/paperclip-document)
-[![Code coverage](https://coveralls.io/repos/burisu/paperclip-document/badge.png?branch=master)](https://coveralls.io/r/burisu/paperclip-document)
+[![Dependency Status](https://gemnasium.com/ekylibre/paperclip-document.png)](https://gemnasium.com/ekylibre/paperclip-document)
+[![Quality metrics](https://codeclimate.com/github/ekylibre/paperclip-document.png)](https://codeclimate.com/github/ekylibre/paperclip-document)
+[![Continuous Integration](https://api.travis-ci.org/ekylibre/paperclip-document.png?branch=master)](https://travis-ci.org/ekylibre/paperclip-document)
+[![Code coverage](https://coveralls.io/repos/ekylibre/paperclip-document/badge.png?branch=master)](https://coveralls.io/r/ekylibre/paperclip-document)
 
 Document processors for paperclip.
 

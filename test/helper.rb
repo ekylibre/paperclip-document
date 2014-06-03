@@ -5,7 +5,7 @@ require 'paperclip/railtie'
 require 'active_record'
 require 'pathname'
 require 'paperclip/document'
-require 'test/unit'
+require 'minitest/autorun'
 
 # Connect to sqlite
 ActiveRecord::Base.establish_connection(
@@ -32,7 +32,7 @@ end
 
 
 
-class Paperclip::Document::TestCase < Test::Unit::TestCase
+class Paperclip::Document::TestCase < MiniTest::Test
 
   def fixtures
     Pathname.new(__FILE__).dirname.join("fixtures")
