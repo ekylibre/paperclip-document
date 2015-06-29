@@ -26,7 +26,7 @@ module Paperclip
           instance[pages_count_column] = count
           instance.run_callbacks(:save) { false }
 
-          return file
+          return File.open(file.path)
         end
         
         # Check if a pages count column is present

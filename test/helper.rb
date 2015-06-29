@@ -14,7 +14,7 @@ ActiveRecord::Base.establish_connection(
   "adapter" => "sqlite3",
   "database" => ":memory:"
 )
-
+ActiveRecord::Base.raise_in_transactional_callbacks = true
 ActiveRecord::Base.logger = Logger.new(nil)
 load(File.join(File.dirname(__FILE__), 'schema.rb'))
 
@@ -22,14 +22,15 @@ Paperclip::Railtie.insert
 
 class Document < ActiveRecord::Base
   has_attached_file(:original,
-                    :storage => :filesystem,
-                    :path => "./tmp/documents/:id/:style.:extension",
-                    :url => "/tmp/:id.:extension",
-                    :styles => {
-                      :archive => {:clean => true, :format => :pdf, :processors => [:reader, :counter, :freezer]},
-                      :thumbnail => {:processors => [:sketcher], :format => :jpg}
+                    storage: :filesystem,
+                    path: "./tmp/documents/:id/:style.:extension",
+                    url: "/tmp/:id.:extension",
+                    validate_media_type: false,
+                    styles: {
+                      archive: {clean: true, format: :pdf, processors: [:reader, :counter, :freezer]},
+                      thumbnail: {format: :jpg, processors: [:sketcher]}
                     })
-  validates_attachment_content_type :original, :content_type => /application/
+  validates_attachment_content_type :original, content_type: /application/
 
   has_attached_file(:freezed, styles: {archive: {format: :jpg, processors: [:freezer]}})
   validates_attachment_content_type :freezed, content_type: /application/

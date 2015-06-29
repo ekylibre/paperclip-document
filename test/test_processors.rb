@@ -1,11 +1,10 @@
-# encoding: utf-8
 require 'helper'
 
 class TestProcessors < Paperclip::Document::TestCase
 
   def test_odt
     f = File.open(fixtures.join("example.odt"))
-    document = Document.create!(:name => "My first document", :original => f)
+    document = Document.create!(name: "My ODT document", original: f)
     f.close
 
     document.reload
@@ -17,7 +16,7 @@ class TestProcessors < Paperclip::Document::TestCase
 
   def test_pdf
     f = File.open(fixtures.join("example.pdf"))
-    document = Document.create!(:name => "My second document", :original => f)
+    document = Document.create!(name: "My PDF document", original: f)
     f.close
 
     document.reload
@@ -29,7 +28,7 @@ class TestProcessors < Paperclip::Document::TestCase
 
   def test_docx
     f = File.open(fixtures.join("example.docx"))
-    document = Document.create!(:name => "My third document", :original => f)
+    document = Document.create!(name: "My DOCX document", original: f)
     f.close
 
     document.reload

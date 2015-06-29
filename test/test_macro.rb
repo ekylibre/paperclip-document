@@ -4,33 +4,33 @@ require 'helper'
 class TestMacro < Paperclip::Document::TestCase
 
   def test_freezer
-    assert_raises ActiveRecord::RecordInvalid do
+    assert_raises Paperclip::Error do
       f = File.open(fixtures.join("example.pdf"))
-      document = Document.create!(:name => "My first document", :freezed => f)
+      document = Document.create!(name: "My frozen document", freezed: f)
       f.close
     end    
   end
 
   def test_reader
-    assert_raises ActiveRecord::RecordInvalid do
+    assert_raises Paperclip::Error do
       f = File.open(fixtures.join("example.pdf"))
-      document = Document.create!(:name => "My first document", :readed => f)
+      document = Document.create!(name: "My read document", readed: f)
       f.close
     end    
   end
 
   def test_counter
-    assert_raises ActiveRecord::RecordInvalid do
+    assert_raises Paperclip::Error do
       f = File.open(fixtures.join("example.pdf"))
-      document = Document.create!(:name => "My first document", :counted => f)
+      document = Document.create!(name: "My counted document", counted: f)
       f.close
     end    
   end
 
   def test_sketcher
-    assert_raises ActiveRecord::RecordInvalid do
+    assert_raises Paperclip::Error do
       f = File.open(fixtures.join("example.pdf"))
-      document = Document.create!(:name => "My first document", :sketched => f)
+      document = Document.create!(name: "My sketched document", sketched: f)
       f.close
     end    
   end

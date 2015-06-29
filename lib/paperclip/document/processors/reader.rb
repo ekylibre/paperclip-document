@@ -34,7 +34,7 @@ module Paperclip
           instance.run_callbacks(:save) { false }
           f.close
 
-          return file
+          return File.open(file.path)
         end
         
         # Check if the default text column is present
