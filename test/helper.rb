@@ -1,8 +1,8 @@
 require 'coveralls'
 Coveralls.wear!
+require 'active_record'
 require 'paperclip'
 require 'paperclip/railtie'
-require 'active_record'
 require 'pathname'
 require 'paperclip/document'
 require 'minitest/autorun'
