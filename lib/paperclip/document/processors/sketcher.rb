@@ -3,7 +3,7 @@ module Paperclip
     module Processors
       # This processor extract first page as thumbnail
       class Sketcher < Paperclip::Document::Processor
-        attr_accessor :format, :density, :format
+        attr_accessor :format, :density
 
         def initialize(file, options = {}, attachment = nil)
           super(file, options, attachment)
