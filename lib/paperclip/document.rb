@@ -1,7 +1,7 @@
-require "paperclip/document/version"
-require "paperclip/document/attachment_extension"
-require "docsplit"
-require "pathname"
+require 'paperclip/document/version'
+require 'paperclip/document/attachment_extension'
+require 'docsplit'
+require 'pathname'
 
 module Paperclip
   module Document
@@ -15,6 +15,4 @@ module Paperclip
     c.register_processor :freezer,  Document::Processors::Freezer
     c.register_processor :counter,  Document::Processors::Counter
   end
-
 end
-

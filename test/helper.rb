@@ -11,8 +11,8 @@ I18n.enforce_available_locales = false
 
 # Connect to sqlite
 ActiveRecord::Base.establish_connection(
-  "adapter" => "sqlite3",
-  "database" => ":memory:"
+  'adapter' => 'sqlite3',
+  'database' => ':memory:'
 )
 ActiveRecord::Base.raise_in_transactional_callbacks = true
 ActiveRecord::Base.logger = Logger.new(nil)
@@ -23,34 +23,30 @@ Paperclip::Railtie.insert
 class Document < ActiveRecord::Base
   has_attached_file(:original,
                     storage: :filesystem,
-                    path: "./tmp/documents/:id/:style.:extension",
-                    url: "/tmp/:id.:extension",
+                    path: './tmp/documents/:id/:style.:extension',
+                    url: '/tmp/:id.:extension',
                     validate_media_type: false,
                     styles: {
-                      archive: {clean: true, format: :pdf, processors: [:reader, :counter, :freezer]},
-                      thumbnail: {format: :jpg, processors: [:sketcher]}
+                      archive: { clean: true, format: :pdf, processors: [:reader, :counter, :freezer] },
+                      thumbnail: { format: :jpg, processors: [:sketcher] }
                     })
   validates_attachment_content_type :original, content_type: /application/
 
-  has_attached_file(:freezed, styles: {archive: {format: :jpg, processors: [:freezer]}})
+  has_attached_file(:freezed, styles: { archive: { format: :jpg, processors: [:freezer] } })
   validates_attachment_content_type :freezed, content_type: /application/
 
-  has_attached_file(:readed, styles: {archive: {processors: [:reader]}})
+  has_attached_file(:readed, styles: { archive: { processors: [:reader] } })
   validates_attachment_content_type :readed, content_type: /application/
 
-  has_attached_file(:counted, styles: {archive: {processors: [:counter]}})
+  has_attached_file(:counted, styles: { archive: { processors: [:counter] } })
   validates_attachment_content_type :counted, content_type: /application/
 
-  has_attached_file(:sketched, styles: {archive: {format: :pdf, processors: [:sketcher]}})
+  has_attached_file(:sketched, styles: { archive: { format: :pdf, processors: [:sketcher] } })
   validates_attachment_content_type :sketched, content_type: /application/
-
 end
 
-
-
 class Paperclip::Document::TestCase < MiniTest::Test
-
   def fixtures
-    Pathname.new(__FILE__).dirname.join("fixtures")
+    Pathname.new(__FILE__).dirname.join('fixtures')
   end
 end

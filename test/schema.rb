@@ -1,5 +1,5 @@
-ActiveRecord::Schema.define :version => "001" do
-  create_table "documents", :force => true do |t|
+ActiveRecord::Schema.define version: '001' do
+  create_table 'documents', force: true do |t|
     t.string  :name
 
     t.string  :original_file_name
@@ -32,6 +32,5 @@ ActiveRecord::Schema.define :version => "001" do
     t.string  :sketched_content_type
     t.integer :sketched_updated_at
     t.integer :sketched_file_size
-
   end
 end
