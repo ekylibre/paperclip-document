@@ -1,4 +1,4 @@
-# encoding: utf-8
+
 require 'helper'
 
 class TestMacro < Paperclip::Document::TestCase

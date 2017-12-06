@@ -8,7 +8,7 @@ module Paperclip
         def initialize(file, options = {}, attachment = nil)
           super(file, options, attachment)
           @format = (options[:format] || :jpg).to_sym
-          unless [:jpg, :png].include?(@format)
+          unless %i[jpg png].include?(@format)
             raise Paperclip::Error, 'Valid format must be specified'
           end
           unless @size = options[:size]

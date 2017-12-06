@@ -30,7 +30,7 @@ class Document < ActiveRecord::Base
     url: '/tmp/:id.:extension',
     validate_media_type: false,
     styles: {
-      archive: { clean: true, format: :pdf, processors: [:reader, :counter, :freezer] },
+      archive: { clean: true, format: :pdf, processors: %i[reader counter freezer] },
       thumbnail: { format: :jpg, processors: [:sketcher] }
     }
   )
