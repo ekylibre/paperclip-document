@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'burisu-docsplit', '>= 0.7.9'
-  spec.add_dependency 'paperclip', '>= 3.1', '< 5.2'
+  spec.add_dependency 'paperclip', '>= 3.1', '< 6.0'
   spec.add_development_dependency 'bundler', '>= 1.3'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'minitest'
