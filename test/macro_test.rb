@@ -1,7 +1,7 @@
 
 require 'helper'
 
-class TestMacro < Paperclip::Document::TestCase
+class MacroTest < Paperclip::Document::TestCase
   def test_freezer
     assert_raises Paperclip::Error do
       f = File.open(fixtures.join('example.pdf'))

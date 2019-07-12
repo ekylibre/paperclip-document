@@ -1,11 +1,9 @@
-require 'coveralls'
-Coveralls.wear!
 require 'pathname'
 require 'active_record'
 require 'paperclip'
 require 'paperclip/railtie'
 require 'paperclip/document'
-require 'minitest'
+require 'minitest/autorun'
 
 I18n.enforce_available_locales = false
 
@@ -49,7 +47,7 @@ class Document < ActiveRecord::Base
   validates_attachment_content_type :sketched, content_type: /application/
 end
 
-class Paperclip::Document::TestCase < MiniTest::Test
+class Paperclip::Document::TestCase < MiniTest::Unit::TestCase
   def fixtures
     Pathname.new(__FILE__).dirname.join('fixtures')
   end
