@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestProcessors < Paperclip::Document::TestCase
+class ProcessorsTest < Paperclip::Document::TestCase
   def test_odt
     f = File.open(fixtures.join('example.odt'))
     document = Document.create!(name: 'My ODT document', original: f)

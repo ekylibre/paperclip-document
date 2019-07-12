@@ -11,17 +11,16 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'http://github.com/burisu/paperclip-document'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files lib LICENSE.txt README.md`.split($INPUT_RECORD_SEPARATOR)
+  spec.files         = `git ls-files lib LICENSE.txt README.md`
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
   spec.add_dependency 'burisu-docsplit', '>= 0.7.9'
-  spec.add_dependency 'paperclip', '>= 3.1', '< 6.0'
+  spec.add_dependency 'paperclip', '>= 3.1'
   spec.add_development_dependency 'bundler', '>= 1.3'
-  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'minitest'
-  spec.add_development_dependency 'rails', '>= 3.2'
+  spec.add_development_dependency 'rails', '>= 3.2', '< 6'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'sqlite3'
+  spec.add_development_dependency 'sqlite3', '~> 1.3.0'
 end
